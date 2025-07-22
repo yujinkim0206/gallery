@@ -15,10 +15,29 @@
                 h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
+    <link rel="stylesheet" href="app.css">
 </head>
-    <nav></nav>
-<body>
 
+<body>
+    <div class="container">
+        <header>
+            <h1>Yujin Kim</h1>
+            <p>yujinkim0206@gmail.com</p>
+        </header>
+        <div class="gallery">
+            <img src="images/49.jpg" alt="">
+            <img src="images/47.jpg" alt="">
+            <img src="images/41.jpg" alt="">
+            <img src="images/40.jpg" alt="">
+            <img src="images/37.jpg" alt="">
+            <img src="images/36.jpg" alt="">
+            <img src="images/34.jpg" alt="">
+            <img src="images/30.jpg" alt="">
+            <img src="images/18.jpg" alt="">
+            <img src="images/15.jpg" alt="">
+            <img src="images/14.jpg" alt="">
+        </div>
+    </div>
 </body>
 
 </html>
