@@ -131,7 +131,7 @@ table {
 }
 
 @font-face {
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
@@ -144,7 +144,7 @@ table {
 }
 
 body {
-    font-family: 'Pretendard-Regular', sans-serif;
+    font-family: 'Pretendard', sans-serif;
     line-height: 1.6;
 }
 
@@ -203,4 +203,24 @@ p {
 .gallery img {
     width: 100%;
     height: auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: right;
+}
+
+.sort-button {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sort-button:hover {
+    color: gray;
 }
