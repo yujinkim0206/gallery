@@ -175,13 +175,13 @@ body {
     flex-direction: column;
 }
 
-h1 {
+.name {
     font-size: 2rem;
     font-weight: 700;
     padding-bottom: 1rem;
 }
 
-p {
+.description {
     font-size: 1rem;
     font-weight: 400;
 }
@@ -210,7 +210,7 @@ p {
     justify-content: right;
 }
 
-.sort-button {
+.btn {
     font-family: 'Pretendard', sans-serif;
     font-size: 1rem;
     background: none;
@@ -221,6 +221,26 @@ p {
     transition: color 0.3s ease;
 }
 
-.sort-button:hover {
+.btn:hover {
     color: gray;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.sort-btn {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
 }

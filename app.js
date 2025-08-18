@@ -1,4 +1,4 @@
-const sortButton = document.getElementById('sortButton');
+const sortBtn = document.getElementById('sortBtn');
 const colA = document.getElementById('colA');
 const colB = document.getElementById('colB');
 
@@ -30,7 +30,7 @@ const sortAndRender = () => {
     return order === 'desc' ? db - da : da - db;
   });
   render(sorted);
-  sortButton.textContent = order === 'desc' ? 'Date created ↓' : 'Date created ↑';
+  sortBtn.innerHTML = order === 'desc' ? 'Date created &darr;' : 'Date created &uarr;';
 };
 
 async function load() {
@@ -45,11 +45,11 @@ async function load() {
 
 load();
 
-sortButton.addEventListener('click', () => {
+sortBtn.addEventListener('click', () => {
   order = order === 'desc' ? 'asc' : 'desc';
   sortAndRender();
 });
 
-const input = "2025-07-22 3:56 PM";
-const date = new Date(input);
-console.log(date.toISOString());
+// const input = "2025-07-22 3:56 PM";
+// const date = new Date(input);
+// console.log(date.toISOString());
