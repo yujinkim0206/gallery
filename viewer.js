@@ -9,8 +9,17 @@ const src = params.get("src");
 let data = [];
 let currentIndex = -1;
 
-const ZOOM_FACTOR = 1.5;
 let isZoomed = false;
+
+const mq = window.matchMedia('(max-width: 768px)');
+let isSmall = mq.matches;
+
+mq.addEventListener('change', (e) => {
+  isSmall = e.matches;
+  if (isSmall && isZoomed) {
+    resetZoom();
+  }
+});
 
 async function load() {
   const res = await fetch("images.json");
@@ -26,17 +35,21 @@ async function load() {
   showImage(currentIndex);
 }
 
+function resetZoom() {
+  isZoomed = false;
+  fullImg.classList.remove("zoomed");
+  fullImgContainer.classList.remove("zoomed");
+  fullImg.style.width = "";
+  fullImg.style.height = "";
+  fullImgContainer.scrollLeft = 0;
+  fullImgContainer.scrollTop = 0;
+}
+
 function showImage(i) {
   if (isZoomed) {
     fullImg.style.visibility = "hidden";
 
-    isZoomed = false;
-    fullImg.classList.remove("zoomed");
-    fullImgContainer.classList.remove("zoomed");
-    fullImg.style.width = "";
-    fullImg.style.height = "";
-    fullImgContainer.scrollLeft = 0;
-    fullImgContainer.scrollTop = 0;
+    resetZoom();
     
     fullImg.onload = () => {
       fullImg.style.visibility = "visible";
@@ -53,7 +66,7 @@ function scrollToCenter() {
   fullImgContainer.scrollTop  = Math.max(0, targetTop);
 }
 
-fullImg.addEventListener("click", () => {
+function handleDesktopImageClick() {
   if (!isZoomed) {
     isZoomed = true;
     fullImg.classList.add("zoomed");
@@ -77,13 +90,33 @@ fullImg.addEventListener("click", () => {
 
     requestAnimationFrame(scrollToCenter);
   } else {
-    isZoomed = false;
-    fullImg.classList.remove("zoomed");
-    fullImgContainer.classList.remove("zoomed");
-    fullImg.style.width = "";
-    fullImg.style.height = "";
-    fullImgContainer.scrollLeft = 0;
-    fullImgContainer.scrollTop = 0;
+    resetZoom();
+  }
+}
+
+function handleSmallImageClick(e) {
+  const rect = fullImgContainer.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const mid = rect.width / 2;
+
+  if (clickX < mid) {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showImage(currentIndex);
+    }
+  } else {
+    if (currentIndex < data.length - 1) {
+      currentIndex++;
+      showImage(currentIndex);
+    }
+  }
+}
+
+fullImg.addEventListener("click", (e) => {
+  if (isSmall) {
+    handleSmallImageClick(e);
+  } else {
+    handleDesktopImageClick();
   }
 });
 
