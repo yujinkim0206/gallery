@@ -2,8 +2,8 @@
 
 An illustration portfolio built with HTML, CSS, and JavaScript. It showcases artworks in a responsive grid, supports sorting by date, and includes a fullscreen viewer with zoom and optional video playback for selected pieces.
 
-![Home](screenshots/home.png)  
-![Viewer](screenshots/viewer.png)
+![Home](screenshots/homess.png)  
+![Viewer](screenshots/viewerss.png)
 
 ## Features
 - Responsive gallery
