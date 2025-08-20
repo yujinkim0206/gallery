@@ -1,5 +1,9 @@
 const fullImg = document.querySelector('#fullImg');
 const fullImgContainer = document.querySelector('#fullImgContainer');
+
+const video = document.querySelector('#video');
+const playBtn = document.querySelector('#playBtn');
+
 const closeBtn = document.querySelector('#closeBtn');
 const prevBtn = document.querySelector('#prevBtn');
 const nextBtn = document.querySelector('#nextBtn');
@@ -10,6 +14,7 @@ let data = [];
 let currentIndex = -1;
 
 let isZoomed = false;
+let isVideoMode = false;
 
 const mq = window.matchMedia('(max-width: 768px)');
 let isSmall = mq.matches;
@@ -45,18 +50,40 @@ function resetZoom() {
   fullImgContainer.scrollTop = 0;
 }
 
+function exitVideo() {
+  if (!isVideoMode) return;
+  video.pause();
+  video.currentTime = 0;
+
+  isVideoMode = false;
+
+  fullImg.style.display = "";
+  video.style.display = "none";
+  playBtn.innerHTML = "&#9658;";
+}
+
 function showImage(i) {
+  exitVideo();
+
   if (isZoomed) {
     fullImg.style.visibility = "hidden";
-
     resetZoom();
-    
     fullImg.onload = () => {
       fullImg.style.visibility = "visible";
     };
   }
 
-  fullImg.src = data[i].src;
+  const item = data[i];
+  fullImg.src = item.src;
+
+  if (item.video) {
+    video.src = item.video;
+    playBtn.classList.remove('hidden');
+    playBtn.innerHTML = "&#9658;";
+  } else {
+    video.removeAttribute('src');
+    playBtn.classList.add('hidden');
+  }
 
   prevBtn.disabled = (i === 0);
   nextBtn.disabled = (i === data.length - 1);
@@ -70,6 +97,8 @@ function scrollToCenter() {
 }
 
 function handleDesktopImageClick() {
+  if (isVideoMode) return;
+
   if (!isZoomed) {
     isZoomed = true;
     fullImg.classList.add("zoomed");
@@ -114,6 +143,28 @@ function handleSmallImageClick(e) {
     }
   }
 }
+
+playBtn.addEventListener('click', () => {
+  const item = data[currentIndex];
+  if (!item.video) return;
+
+  if (!isVideoMode) {
+    if (isZoomed) resetZoom();
+    isVideoMode = true;
+    fullImg.style.display = "none";
+    video.style.display = "block";
+    video.play();
+    playBtn.innerHTML = "&#9208;";
+  } else {
+    if (video.paused) {
+      video.play();
+      playBtn.innerHTML = "&#9208;";
+    } else {
+      video.pause();
+      playBtn.innerHTML = "&#9658;";
+    }
+  }
+});
 
 fullImg.addEventListener("click", (e) => {
   if (isSmall) {

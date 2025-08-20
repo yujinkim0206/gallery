@@ -4,7 +4,7 @@
   { "src": "images/41.jpg", "dateISO": "2024-12-22T00:00:00.000Z" },
   { "src": "images/40.jpg", "dateISO": "2024-12-01T00:00:00.000Z" },
   { "src": "images/37.jpg", "dateISO": "2024-10-05T00:00:00.000Z" },
-  { "src": "images/36.jpg", "dateISO": "2024-09-15T00:00:00.000Z" },
+  { "src": "images/36.jpg", "dateISO": "2024-09-15T00:00:00.000Z", "video": "videos/36.mp4" },
   { "src": "images/34.jpg", "dateISO": "2024-08-01T00:00:00.000Z" },
   { "src": "images/30.jpg", "dateISO": "2024-06-10T00:00:00.000Z" },
   { "src": "images/18.jpg", "dateISO": "2024-03-11T00:00:00.000Z" },
