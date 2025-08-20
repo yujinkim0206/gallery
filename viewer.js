@@ -57,6 +57,9 @@ function showImage(i) {
   }
 
   fullImg.src = data[i].src;
+
+  prevBtn.disabled = (i === 0);
+  nextBtn.disabled = (i === data.length - 1);
 }
 
 function scrollToCenter() {
