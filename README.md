@@ -16,4 +16,5 @@ An illustration portfolio built with HTML, CSS, and JavaScript. It showcases art
 From the project folder, run:
 ```bash
 python -m http.server 8000
+```
 Then open http://localhost:8000 in your browser.
