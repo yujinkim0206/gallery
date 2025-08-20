@@ -4,20 +4,33 @@ html, body {
 
 body {
   margin: 0;
-  background: white;
+}
+
+#fullImgContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+#fullImgContainer.zoomed {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 #fullImg {
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
   cursor: zoom-in;
 }
 
 #fullImg.zoomed {
-  transform: scale(2);
+  max-width: none;
+  max-height: none;
   cursor: zoom-out;
 }
 
