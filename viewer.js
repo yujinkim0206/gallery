@@ -144,6 +144,20 @@ function handleSmallImageClick(e) {
   }
 }
 
+fullImg.addEventListener("click", (e) => {
+  if (isSmall) {
+    handleSmallImageClick(e);
+  } else {
+    handleDesktopImageClick();
+  }
+});
+
+video.addEventListener("click", (e) => {
+  if (isSmall) {
+    handleSmallImageClick(e);
+  }
+});
+
 playBtn.addEventListener('click', () => {
   const item = data[currentIndex];
   if (!item.video) return;
@@ -163,14 +177,6 @@ playBtn.addEventListener('click', () => {
       video.pause();
       playBtn.innerHTML = "&#9658;";
     }
-  }
-});
-
-fullImg.addEventListener("click", (e) => {
-  if (isSmall) {
-    handleSmallImageClick(e);
-  } else {
-    handleDesktopImageClick();
   }
 });
 
