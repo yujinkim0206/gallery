@@ -56,6 +56,10 @@ body {
   outline: none;
 }
 
+.nav-btn:disabled {
+  visibility: hidden;
+}
+
 .close-btn {
     font-size: 1.5rem;
     top: 20px;
