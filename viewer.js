@@ -59,7 +59,7 @@ function exitVideo() {
 
   fullImg.style.display = "";
   video.style.display = "none";
-  playBtn.innerHTML = "&#9658;";
+  playBtn.innerHTML = "&#9205;";
 }
 
 function showImage(i) {
@@ -79,7 +79,7 @@ function showImage(i) {
   if (item.video) {
     video.src = item.video;
     playBtn.classList.remove('hidden');
-    playBtn.innerHTML = "&#9658;";
+    playBtn.innerHTML = "&#9205;";
   } else {
     video.removeAttribute('src');
     playBtn.classList.add('hidden');
@@ -87,6 +87,10 @@ function showImage(i) {
 
   prevBtn.disabled = (i === 0);
   nextBtn.disabled = (i === data.length - 1);
+
+  if (document.body.classList.contains('preload')) {
+    document.body.classList.remove('preload');
+  }
 }
 
 function scrollToCenter() {
@@ -126,7 +130,7 @@ function handleDesktopImageClick() {
   }
 }
 
-function handleSmallImageClick(e) {
+function handleMobileImageClick(e) {
   const rect = fullImgContainer.getBoundingClientRect();
   const clickX = e.clientX - rect.left;
   const mid = rect.width / 2;
@@ -145,17 +149,22 @@ function handleSmallImageClick(e) {
 }
 
 fullImg.addEventListener("click", (e) => {
-  if (isSmall) {
-    handleSmallImageClick(e);
-  } else {
-    handleDesktopImageClick();
-  }
+  if (isSmall) return;
+  handleDesktopImageClick();
 });
 
-video.addEventListener("click", (e) => {
-  if (isSmall) {
-    handleSmallImageClick(e);
-  }
+fullImgContainer.addEventListener("click", (e) => {
+  if (!isSmall) return;
+  handleMobileImageClick(e);
+});
+
+video.removeEventListener?.("click", () => {});
+
+video.addEventListener("ended", () => {
+  playBtn.innerHTML = "&#9205;";
+  isVideoMode = false;
+  fullImg.style.display = "";
+  video.style.display = "none";
 });
 
 playBtn.addEventListener('click', () => {
@@ -175,7 +184,7 @@ playBtn.addEventListener('click', () => {
       playBtn.innerHTML = "&#9208;";
     } else {
       video.pause();
-      playBtn.innerHTML = "&#9658;";
+      playBtn.innerHTML = "&#9205;";
     }
   }
 });
