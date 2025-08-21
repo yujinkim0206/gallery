@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+body.preload .nav-btn {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 #fullImgContainer {
   width: 100vw;
   height: 100vh;
@@ -69,7 +74,7 @@ body {
 }
 
 .play-btn {
-  font-size: 1.5rem;
+  font-size: 2rem;
     top: 30px;
     left: 20px;
 }
@@ -91,6 +96,10 @@ body {
   .prev-btn,
   .next-btn {
     display: none;
+  }
+
+  #fullImgContainer {
+    cursor: pointer;
   }
 
   #fullImg {
