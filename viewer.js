@@ -27,6 +27,13 @@ mq.addEventListener('change', (e) => {
   }
 });
 
+function updateURL(i, method = 'replace') {
+  const url = new URL(location.href);
+  url.searchParams.set('src', data[i].src);
+  const newUrl = url.pathname + '?' + url.searchParams.toString();
+  history.replaceState({ index: i }, '', newUrl);
+}
+
 async function load() {
   const res = await fetch("images.json");
   data = await res.json();
@@ -37,6 +44,8 @@ async function load() {
     window.location.href = "index.html";
     return;
   }
+
+  history.replaceState({ index: currentIndex }, '', location.href);
 
   showImage(currentIndex);
 }
@@ -71,11 +80,14 @@ function showImage(i) {
     resetZoom();
     fullImg.onload = () => {
       fullImg.style.visibility = "visible";
+      fullImg.onload = null;
     };
   }
 
   const item = data[i];
   fullImg.src = item.src;
+
+  updateURL(i);
 
   if (item.video) {
     video.src = item.video;
@@ -216,6 +228,18 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeBtn.click();
   if (e.key === "ArrowLeft") prevBtn.click();
   if (e.key === "ArrowRight") nextBtn.click();
+});
+
+window.addEventListener('popstate', (ev) => {
+  let idx = ev.state?.index;
+  if (typeof idx !== 'number') {
+    const s = new URLSearchParams(location.search).get('src');
+    idx = data.findIndex(item => item.src === s);
+  }
+  if (idx >= 0 && idx < data.length) {
+    currentIndex = idx;
+    showImage(currentIndex);
+  }
 });
 
 load();
