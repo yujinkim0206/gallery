@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="viewer.css">
 </head>
 <body class="preload">
-    <button id="playBtn" class="nav-btn play-btn hidden">&#9205;</button>
-    <button id="prevBtn" class="nav-btn prev-btn">&larr;</button>
+    <button id="playBtn" class="nav-btn play-btn hidden"><ion-icon name="play-sharp"></ion-icon></button>
+    <button id="prevBtn" class="nav-btn prev-btn"><ion-icon name="arrow-back-sharp"></ion-icon></button>
 
     <div id="fullImgContainer">
         <img id="fullImg" alt="" />
         <video id="video" playsinline></video>
     </div>
 
-    <button id="nextBtn" class="nav-btn next-btn">&rarr;</button>
-    <button id="closeBtn" class="nav-btn close-btn">&#x2715;</button>
+    <button id="nextBtn" class="nav-btn next-btn"><ion-icon name="arrow-forward-sharp"></ion-icon></button>
+    <button id="closeBtn" class="nav-btn close-btn"><ion-icon name="close-sharp"></ion-icon></button>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="viewer.js"></script>
 </body>
 </html>

@@ -2,7 +2,8 @@ const fullImg = document.querySelector('#fullImg');
 const fullImgContainer = document.querySelector('#fullImgContainer');
 
 const video = document.querySelector('#video');
-const playBtn = document.querySelector('#playBtn');
+const playBtn  = document.querySelector('#playBtn');
+const playIcon = playBtn.querySelector('ion-icon');
 
 const closeBtn = document.querySelector('#closeBtn');
 const prevBtn = document.querySelector('#prevBtn');
@@ -59,7 +60,7 @@ function exitVideo() {
 
   fullImg.style.display = "";
   video.style.display = "none";
-  playBtn.innerHTML = "&#9205;";
+  playIcon.setAttribute("name", "play-sharp");
 }
 
 function showImage(i) {
@@ -79,7 +80,7 @@ function showImage(i) {
   if (item.video) {
     video.src = item.video;
     playBtn.classList.remove('hidden');
-    playBtn.innerHTML = "&#9205;";
+    playIcon.setAttribute("name", "play-sharp");
   } else {
     video.removeAttribute('src');
     playBtn.classList.add('hidden');
@@ -161,7 +162,7 @@ fullImgContainer.addEventListener("click", (e) => {
 video.removeEventListener?.("click", () => {});
 
 video.addEventListener("ended", () => {
-  playBtn.innerHTML = "&#9205;";
+  playIcon.setAttribute("name", "play-sharp");
   isVideoMode = false;
   fullImg.style.display = "";
   video.style.display = "none";
@@ -177,14 +178,14 @@ playBtn.addEventListener('click', () => {
     fullImg.style.display = "none";
     video.style.display = "block";
     video.play();
-    playBtn.innerHTML = "&#9208;";
+    playIcon.setAttribute("name", "pause-sharp");
   } else {
     if (video.paused) {
       video.play();
-      playBtn.innerHTML = "&#9208;";
+      playIcon.setAttribute("name", "pause-sharp");
     } else {
       video.pause();
-      playBtn.innerHTML = "&#9205;";
+      playIcon.setAttribute("name", "play-sharp");
     }
   }
 });

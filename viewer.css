@@ -11,6 +11,12 @@ body.preload .nav-btn {
   pointer-events: none;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background: none;
+}
+
 #fullImgContainer {
   width: 100vw;
   height: 100vh;
@@ -74,9 +80,9 @@ body.preload .nav-btn {
 }
 
 .play-btn {
-  font-size: 2rem;
-    top: 30px;
-    left: 20px;
+  font-size: 1.75rem;
+  top: 40px;
+  left: 20px;
 }
 
 .play-btn.hidden {
@@ -84,9 +90,8 @@ body.preload .nav-btn {
 }
 
 .close-btn {
-    font-size: 1.5rem;
-    top: 30px;
-    right: 20px;
+  top: 40px;
+  right: 20px;
 }
 
 .prev-btn { left: 20px; }
