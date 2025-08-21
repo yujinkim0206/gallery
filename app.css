@@ -149,9 +149,13 @@ body {
 }
 
 button {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   background: none;
+  border: none;
+  color: inherit;
 }
 
 .container {
@@ -243,10 +247,19 @@ button {
     .header {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .gallery {
         grid-template-columns: 1fr;
+    }
+
+    .profpic {
+    width: 80px;
+    height: 80px;
+    }
+
+    .name {
+    padding-bottom: 0.5rem;
     }
 }
