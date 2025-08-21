@@ -158,6 +158,10 @@ button {
   color: inherit;
 }
 
+button:active {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .container {
     max-width: 1024px;
     margin: 0 auto;

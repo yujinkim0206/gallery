@@ -21,6 +21,10 @@ button {
   color: inherit;
 }
 
+button:active {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #fullImgContainer {
   width: 100vw;
   height: 100vh;
