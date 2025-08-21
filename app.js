@@ -5,22 +5,34 @@ const colB = document.getElementById('colB');
 let data = [];
 let order = 'desc';
 
+const mq = window.matchMedia('(max-width: 768px)');
+
+function buildThumb(item) {
+  const link = document.createElement('a');
+  link.href = `viewer.html?src=${encodeURIComponent(item.src)}`;
+
+  const img = new Image();
+  img.src = item.src;
+  img.alt = '';
+  img.loading = 'lazy';
+
+  link.appendChild(img);
+  return link;
+}
+
 const render = (items) => {
+  const isOneCol = mq.matches;
+
   colA.innerHTML = '';
   colB.innerHTML = '';
 
-  items.forEach((item, i) => {
-    const link = document.createElement('a');
-    link.href = `viewer.html?src=${encodeURIComponent(item.src)}`;
-    
-    const img = document.createElement('img');
-    img.src = item.src;
-    img.alt = '';
-    img.loading = 'lazy';
-
-    link.appendChild(img);
-    (i % 2 === 0 ? colA : colB).appendChild(link);
-  });
+  if (isOneCol) {
+    colB.style.display = 'none';
+    items.forEach((item) => colA.appendChild(buildThumb(item)));
+  } else {
+    colB.style.display = '';
+    items.forEach((item, i) => (i % 2 === 0 ? colA : colB).appendChild(buildThumb(item)));
+  }
 };
 
 const sortAndRender = () => {
@@ -47,6 +59,10 @@ load();
 
 sortBtn.addEventListener('click', () => {
   order = order === 'desc' ? 'asc' : 'desc';
+  sortAndRender();
+});
+
+mq.addEventListener('change', () => {
   sortAndRender();
 });
 
