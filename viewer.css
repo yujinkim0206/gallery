@@ -12,9 +12,13 @@ body.preload .nav-btn {
 }
 
 button {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   background: none;
+  border: none;
+  color: inherit;
 }
 
 #fullImgContainer {
