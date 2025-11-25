@@ -217,6 +217,11 @@ button:active {
 .gallery img {
     width: 100%;
     height: auto;
+    transition: filter 0.3s ease;
+}
+
+.gallery img:hover {
+    filter: brightness(80%);
 }
 
 .button-container {
