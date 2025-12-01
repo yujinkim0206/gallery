@@ -90,7 +90,7 @@ button:active {
 .play-btn {
   font-size: 1.75rem;
   top: 40px;
-  left: 20px;
+  right: 80px;
 }
 
 .play-btn.hidden {
@@ -118,4 +118,8 @@ button:active {
   #fullImg {
     cursor: pointer;
   }
+
+  .play-btn {
+    right: 70px;
+}
 }
