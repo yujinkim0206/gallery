@@ -4,7 +4,6 @@ This is an illustration gallery built with HTML, CSS, and JavaScript. It display
 
 ![Home](screenshots/home.png)  
 ![Viewer](screenshots/viewer.png)
-![Video](screenshots/video.png)
 
 ## Features
 - Masonry layout
